@@ -1,0 +1,63 @@
+Views/Student/Register.cshtml
+Add:
+@model StudentRegistration.Models.Student
+@{
+ViewBag.Title = "Student Registration";
+}
+<h2>Student Registration</h2>
+@using (Html.BeginForm())
+{
+<div>
+@Html.LabelFor(m => m.Name)
+@Html.TextBoxFor(m => m.Name)
+@Html.ValidationMessageFor(m => m.Name)
+</div>
+<br />
+<div>
+@Html.LabelFor(m => m.Email)
+@Html.TextBoxFor(m => m.Email)
+@Html.ValidationMessageFor(m => m.Email)
+</div>
+<br />
+<div>
+@Html.LabelFor(m => m.Password)
+@Html.PasswordFor(m => m.Password)
+
+@Html.ValidationMessageFor(m => m.Password)
+</div>
+<br />
+<div>
+@Html.LabelFor(m => m.Gender)
+@Html.RadioButtonFor(m => m.Gender, "Male")
+Male
+@Html.RadioButtonFor(m => m.Gender, "Female")
+Female
+</div>
+<br />
+<div>
+@Html.LabelFor(m => m.Course)
+@Html.DropDownListFor(
+m => m.Course,
+new SelectList(new[]
+{
+"BSc Data Science",
+"BSc IT",
+"BCA",
+"MCA"
+}),
+"Select Course"
+)
+</div>
+<br />
+<div>
+@Html.CheckBoxFor(m => m.Agree)
+I agree to the terms and conditions.
+</div>
+<br />
+<input type="submit" value="Register" />
+
+}
+@if (ViewBag.Message != null)
+{
+<h3>@ViewBag.Message</h3>
+}
